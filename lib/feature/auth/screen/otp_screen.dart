@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'dart:async';
 
-import '../../route/route_name.dart';
+import '../../../route/route_name.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
   @override
@@ -185,64 +185,74 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 ),
               ),
 
-              SizedBox(height: 40.h),
+              SizedBox(height: 30.h),
 
               // OTP Input Fields
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(
                   5,
-                      (index) => Container(
-                    width: 50.w,
-                    height: 55.h,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10.r),
-                      border: Border.all(
-                        color: Colors.grey,
-                        width: 1,
-                      ),
-                    ),
-                    child: TextField(
+                      (index) => SizedBox(
+                        height: 56.h,
+                        width: 50.w,
+                        child: TextField(
+                        
+                        
+                        
+                          controller: otpControllers[index],
+                          focusNode: focusNodes[index],
+                          textAlign: TextAlign.center,
+                          keyboardType: TextInputType.number,
+                          maxLength: 1,
+                          style: TextStyle(
+                        
+                            fontSize: 24.sp,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Roboto',
+                            color: Colors.black87,
+                          ),
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(7.r),
+                              borderSide: BorderSide(
+                                color: Colors.grey,
+                                width: 1,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(7.r),
+                              borderSide: BorderSide(
+                                color: Colors.blue,
+                                width: 1,
+                              ),
+                            ),
 
-
-                      controller: otpControllers[index],
-                      focusNode: focusNodes[index],
-                      textAlign: TextAlign.center,
-                      keyboardType: TextInputType.number,
-                      maxLength: 1,
-                      style: TextStyle(
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Roboto',
-                        color: Colors.black87,
+                        
+                            fillColor: Colors.white,
+                            counterText: '',
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.zero,
+                          ),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                          onChanged: (value) {
+                            setState(() {
+                              _handleOtpChange(value, index);
+                            });
+                          },
+                          onTap: () {
+                            otpControllers[index].selection = TextSelection.fromPosition(
+                              TextPosition(offset: otpControllers[index].text.length),
+                            );
+                          },
+                          onEditingComplete: () {
+                            if (index < 4) {
+                              focusNodes[index + 1].requestFocus();
+                            }
+                          },
+                        ),
                       ),
-                      decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        counterText: '',
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.zero,
-                      ),
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      onChanged: (value) {
-                        setState(() {
-                          _handleOtpChange(value, index);
-                        });
-                      },
-                      onTap: () {
-                        otpControllers[index].selection = TextSelection.fromPosition(
-                          TextPosition(offset: otpControllers[index].text.length),
-                        );
-                      },
-                      onEditingComplete: () {
-                        if (index < 4) {
-                          focusNodes[index + 1].requestFocus();
-                        }
-                      },
-                    ),
-                  ),
                 ),
               ),
 

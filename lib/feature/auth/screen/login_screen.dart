@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../route/route_name.dart';
+import '../../../route/route_name.dart';
 
-class SignUpScreen extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -35,9 +35,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
         child: Padding(
           padding: EdgeInsets.only( top: 60.h,
-              bottom: 24.h,
-              left: 24.w,
-              right: 24.w  ),
+            bottom: 24.h,
+            left: 24.w,
+            right: 24.w  ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -81,7 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               // Title
               Text(
-                'Sign Up',
+                'Login',
                 style: TextStyle(
                   fontSize: 26.sp,
                   fontWeight: FontWeight.bold,
@@ -218,59 +218,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12.r),
                     borderSide: BorderSide(
-                      color: Colors.grey[400]!,
-                      width: 1,
-
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(
-                      color: Color(0xFF07657E),
-                      width: 2,
-                    ),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 16.h,
-                  ),
-                ),
-              ),
-              SizedBox(height: 16.h),
-              TextField(
-                controller: passwordController,
-                obscureText: !isPasswordVisible,
-                decoration: InputDecoration(
-                  hintText: 'Confirm Password',
-                  hintStyle: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 16.sp,
-                    fontFamily: 'Roboto',
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      isPasswordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color: Colors.grey[600],
-                      size: 22.sp,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isPasswordVisible = !isPasswordVisible;
-                      });
-                    },
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide.none,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(
-                      color: Colors.grey[400]!,
+                       color: Colors.grey[400]!,
                       width: 1,
 
                     ),
@@ -310,7 +258,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     elevation: 0,
                   ),
                   child: Text(
-                    'Signup',
+                    'Login',
                     style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
@@ -323,8 +271,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               SizedBox(height: 16.h),
 
+              // Forgot password
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {
+                   Get.toNamed(RouteName.resetpassword);
+                  },
+                  child: Text(
+                    'Forgot password ?',
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 14.sp,
+                      fontFamily: 'Roboto',
+                    ),
+                  ),
+                ),
+              ),
 
-
+              SizedBox(height: 8.h),
 
               // Divider with text
               Row(
@@ -374,10 +339,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                      Get.toNamed(RouteName.login);
+                        Get.toNamed(RouteName.signup);
+
                       },
                       child: Text(
-                        ' Sign In',
+                        ' Sign up',
                         style: TextStyle(
                           color: Color(0xFF07657E),
                           fontSize: 14.sp,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../route/route_name.dart';
+import '../../../route/route_name.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   @override

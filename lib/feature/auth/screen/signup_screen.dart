@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../route/route_name.dart';
+import '../../../route/route_name.dart';
 
-class UpdatePasswordScreen extends StatefulWidget {
+class SignUpScreen extends StatefulWidget {
   @override
-  _UpdatePasswordScreenState createState() => _UpdatePasswordScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -81,7 +81,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
 
               // Title
               Text(
-                'Reset your password',
+                'Sign Up',
                 style: TextStyle(
                   fontSize: 26.sp,
                   fontWeight: FontWeight.bold,
@@ -94,7 +94,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
 
               // Subtitle
               Text(
-                'We’ll send you an OTP to reset your password',
+                'Access to your account',
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontFamily: 'Roboto',
@@ -103,6 +103,86 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
               ),
 
               SizedBox(height: 32.h),
+
+              // Name input field
+              TextField(
+
+                decoration: InputDecoration(
+                  hintText: 'Enter your name',
+                  hintStyle: TextStyle(
+                    color: Colors.grey[400],
+                    fontSize: 16.sp,
+                    fontFamily: 'Roboto',
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.r),
+                    borderSide: BorderSide.none,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.r),
+                    borderSide: BorderSide(
+                      color: Colors.grey[400]!,
+                      width: 1,
+                    ),
+
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.r),
+                    borderSide: BorderSide(
+                      color: Color(0xFF07657E),
+                      width: 2,
+                    ),
+                  ),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 16.w,
+                    vertical: 16.h,
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 16.h),
+
+              // Email input field
+              TextField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: 'Enter your email address',
+                  hintStyle: TextStyle(
+                    color: Colors.grey[400],
+                    fontSize: 16.sp,
+                    fontFamily: 'Roboto',
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.r),
+                    borderSide: BorderSide.none,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.r),
+                    borderSide: BorderSide(
+                      color: Colors.grey[400]!,
+                      width: 1,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.r),
+                    borderSide: BorderSide(
+                      color: Color(0xFF07657E),
+                      width: 2,
+                    ),
+                  ),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 16.w,
+                    vertical: 16.h,
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 16.h),
 
               // Password input field
               TextField(
@@ -209,8 +289,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                 ),
               ),
 
-              SizedBox(height: 32.h),
-
+              SizedBox(height: 24.h),
 
               // Login button
               SizedBox(
@@ -231,7 +310,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                     elevation: 0,
                   ),
                   child: Text(
-                    'Update Password',
+                    'Signup',
                     style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
@@ -242,7 +321,77 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                 ),
               ),
 
+              SizedBox(height: 16.h),
 
+
+
+
+              // Divider with text
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      color: Colors.black.withOpacity(0.4),
+                      thickness: 2,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    child: Text(
+                      'or continue with',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Roboto',
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      color: Colors.black.withOpacity(0.4),
+                      thickness: 2,
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 24.h),
+
+              // Sign up link
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an account ? ",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Roboto',
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                      Get.toNamed(RouteName.login);
+                      },
+                      child: Text(
+                        ' Sign In',
+                        style: TextStyle(
+                          color: Color(0xFF07657E),
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Roboto',
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 24.h),
             ],
           ),
         ),
