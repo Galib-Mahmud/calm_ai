@@ -18,7 +18,7 @@ class _LoadingSplashScreenState extends State<LoadingSplashScreen> {
 
     // Navigate after delay
     Future.delayed(const Duration(seconds: 3), () {
-      // Get.offAllNamed(RouteName.dailyFaith);
+      Get.offAllNamed(RouteName.language);
     });
   }
 
