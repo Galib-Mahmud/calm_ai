@@ -10,6 +10,6 @@ class AppRoute {
       page: () => LoadingSplashScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),//
+    ),//Splash Screen
   ];
 }
