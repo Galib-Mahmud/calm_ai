@@ -12,6 +12,7 @@ class TermsAndPrivacyPolicyScreen extends StatelessWidget {
         backgroundColor: Color(0XFFF6FAFB),
         elevation: 0,
         centerTitle: true,
+        forceMaterialTransparency: true,
         title: Text(
           "Terms and privacy policy",
           style: GoogleFonts.dmSerifDisplay(

@@ -12,6 +12,7 @@ class SettingScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0XFFF6FAFB),
         elevation: 0,
+        forceMaterialTransparency: true,
         centerTitle: true,
         title: Text(
           "Settings",

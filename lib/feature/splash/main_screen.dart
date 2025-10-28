@@ -1,7 +1,6 @@
-import 'package:clam_ai/feature/auth/screen/question3_screen.dart';
-
 import 'package:clam_ai/feature/home/screen/history_screen.dart';
 import 'package:clam_ai/feature/home/screen/home_screen.dart';
+import 'package:clam_ai/feature/home/screen/progress_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     HomeScreen(),
     MeditateScreen(),
-    Question3(),
+    ProgressScreen(),
     HistoryScreen(),
   ];
 
