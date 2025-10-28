@@ -14,6 +14,7 @@ class HistoryScreen extends StatelessWidget {
         backgroundColor: Color(0XFFF6FAFB),
         elevation: 0,
         automaticallyImplyLeading: false,
+        forceMaterialTransparency: true,
         centerTitle: true,
         title: Text(
           "History",

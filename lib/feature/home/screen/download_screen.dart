@@ -14,6 +14,7 @@ class DownloadScreen extends StatelessWidget {
         backgroundColor: Color(0XFFF6FAFB),
         elevation: 0,
         centerTitle: true,
+        forceMaterialTransparency: true,
         title: Text(
           "Downloads",
           style: GoogleFonts.dmSerifDisplay(
