@@ -1,6 +1,8 @@
 import 'package:clam_ai/feature/home/widget/offline_session_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DownloadScreen extends StatelessWidget {
@@ -11,6 +13,12 @@ class DownloadScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0XffF6FAFB),
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_new_outlined, color: Color(0XFF07657E)),
+          onPressed: () {
+            Get.back();
+          },
+        ),
         backgroundColor: Color(0XFFF6FAFB),
         elevation: 0,
         centerTitle: true,

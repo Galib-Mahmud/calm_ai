@@ -27,12 +27,12 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: Icon(Icons.arrow_back, color: Colors.black),
+        leading: Icon(Icons.arrow_back_ios_new_outlined, color: Color(0XFF07657E),),
         title: Text(
           'Subscription',
           style: GoogleFonts.dmSerifDisplay(
             fontSize: 24.sp,
-            color: Colors.black,
+            color: Color(0XFF07657E),
             fontWeight: FontWeight.w400,
 
           ),
@@ -56,8 +56,8 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
             Text(
               'Get Premium',
               style: TextStyle(
-                fontSize: 22.sp,
-                fontWeight: FontWeight.bold,
+                fontSize: 32.sp,
+                fontWeight: FontWeight.w500,
                 color: Color(0xFF07657E),
                 fontFamily: 'Roboto',
               ),
@@ -71,7 +71,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14.sp,
-                color: Colors.black,
+                color: Color(0xFF07657E),
                 fontFamily: 'Roboto',
               ),
             ),
@@ -81,7 +81,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
             // Illustration
             Image.asset(
               'assets/images/auth/box.png', // Replace with actual asset path
-              height: 100.h,
+
             ),
 
             SizedBox(height: 32.h),
@@ -90,15 +90,17 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
             GestureDetector(
               onTap: () => _onPlanSelected('Monthly'),
               child: Container(
+                height: 77.h,
                 padding: EdgeInsets.all(16.r),
                 decoration: BoxDecoration(
-                  color: selectedPlan == 'Monthly' ? Color(0xFFE9F6FF) : Colors.white,
+                  color: selectedPlan == 'Monthly' ? Color(0xFFF0F8FF) : Color(0xFFF0F8FF),
                   border: Border.all(
                     color: selectedPlan == 'Monthly' ? Color(0xFF07657E) : Colors.grey.shade300,
                     width: 1,
                   ),
                   borderRadius: BorderRadius.circular(12.r),
                 ),
+
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -130,9 +132,10 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
             GestureDetector(
               onTap: () => _onPlanSelected('Annual'),
               child: Container(
+
                 padding: EdgeInsets.all(16.r),
                 decoration: BoxDecoration(
-                  color: selectedPlan == 'Annual' ? Color(0xFFE9F6FF) : Colors.white,
+                  color: selectedPlan == 'Annual' ? Color(0xFFF0F8FF) :Color(0xFFF0F8FF),
                   border: Border.all(
                     color: selectedPlan == 'Annual' ? Color(0xFF07657E) : Colors.grey.shade300,
                     width: 1,
@@ -142,6 +145,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(height: 4.h),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,7 +159,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                               fontFamily: 'Roboto',
                             ),
                           ),
-                          SizedBox(height: 4.h),
+
                           Text(
                             'First 30 days free - Then \$999/Year',
                             style: TextStyle(
@@ -177,7 +181,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                         'Best Value',
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: Colors.white,
+                          color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Roboto',
                         ),
@@ -225,6 +229,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
             Text(
               'By placing this order, you agree to the Terms of Service and Privacy Policy. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period.',
               style: TextStyle(
+
                 fontSize: 11.sp,
                 color: Colors.grey[600],
                 fontFamily: 'Roboto',

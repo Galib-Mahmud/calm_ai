@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../../../route/route_name.dart';
 
 class MeditateScreen extends StatefulWidget {
   const MeditateScreen({super.key});
@@ -19,33 +23,29 @@ class _MeditateScreenState extends State<MeditateScreen> {
     'Forest ambience',
   ];
 
-  final List<String> voices = [
-    'Female',
-    'Male',
-  ];
+  final List<String> voices = ['Female', 'Male'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Color(0xFFF6FAFB),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFF6FAFB),
+        automaticallyImplyLeading: false,
+
         elevation: 0,
         centerTitle: true,
         title: Text(
           'Meditate',
-          style: TextStyle(
+          style: GoogleFonts.dmSerifDisplay(
             color: Color(0xFF07657E),
-            fontSize: 20.sp,
-            fontWeight: FontWeight.bold,
+            fontSize: 24.sp,
+            fontWeight: FontWeight.w400,
           ),
         ),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(1),
-          child: Container(
-            color: Colors.grey[300],
-            height: 1,
-          ),
+          child: Container(color: Colors.grey[300], height: 1),
         ),
       ),
       body: SingleChildScrollView(
@@ -85,7 +85,7 @@ class _MeditateScreenState extends State<MeditateScreen> {
             Container(
               padding: EdgeInsets.all(16.w),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color(0xFFF6FAFB),
                 borderRadius: BorderRadius.circular(12.r),
                 boxShadow: [
                   BoxShadow(
@@ -107,7 +107,7 @@ class _MeditateScreenState extends State<MeditateScreen> {
                           color: Color(0xFF07657E).withOpacity(0.1),
                           borderRadius: BorderRadius.circular(8.r),
                         ),
-                        child: Image.asset("assets/images/home/guided.png")
+                        child: Image.asset("assets/images/home/guided.png"),
                       ),
                       SizedBox(width: 12.w),
                       Text(
@@ -166,19 +166,20 @@ class _MeditateScreenState extends State<MeditateScreen> {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.white.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(8.r),
                 border: Border.all(color: Colors.grey[300]!),
               ),
               child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
+                  dropdownColor: Colors.white,
                   value: selectedBackground,
                   isExpanded: true,
-                  icon: Icon(Icons.keyboard_arrow_down, color: Colors.grey[700]),
-                  style: TextStyle(
-                    fontSize: 14.sp,
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
                     color: Colors.grey[700],
                   ),
+                  style: TextStyle(fontSize: 14.sp, color: Colors.grey[700]),
                   items: backgrounds.map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
@@ -212,19 +213,20 @@ class _MeditateScreenState extends State<MeditateScreen> {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.white.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(8.r),
                 border: Border.all(color: Colors.grey[300]!),
               ),
               child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
+                  dropdownColor: Colors.white,
                   value: selectedVoice,
                   isExpanded: true,
-                  icon: Icon(Icons.keyboard_arrow_down, color: Colors.grey[700]),
-                  style: TextStyle(
-                    fontSize: 14.sp,
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
                     color: Colors.grey[700],
                   ),
+                  style: TextStyle(fontSize: 14.sp, color: Colors.grey[700]),
                   items: voices.map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
@@ -245,10 +247,10 @@ class _MeditateScreenState extends State<MeditateScreen> {
             // Start Button
             SizedBox(
               width: double.infinity,
-              height: 34.h,
+              height: 50.h,
               child: ElevatedButton(
                 onPressed: () {
-                  // Handle start meditation
+                  Get.toNamed(RouteName.startSeason);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF07657E),
@@ -284,23 +286,16 @@ class _MeditateScreenState extends State<MeditateScreen> {
             width: 20.w,
             height: 20.h,
             decoration: BoxDecoration(
-              color: Color(0xFF2196F3),
+              color: Colors.white.withOpacity(0.1),
               shape: BoxShape.circle,
             ),
-            child: Icon(
-              Icons.check,
-              color: Colors.white,
-              size: 14.sp,
-            ),
+            child: Icon(Icons.check, color: Colors.white, size: 14.sp),
           ),
           SizedBox(width: 12.w),
           Expanded(
             child: Text(
               text,
-              style: TextStyle(
-                fontSize: 14.sp,
-                color: Colors.black87,
-              ),
+              style: TextStyle(fontSize: 14.sp, color: Colors.black87),
             ),
           ),
         ],

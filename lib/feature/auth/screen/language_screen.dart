@@ -47,6 +47,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
                       fontSize: 16.sp,
+                      decoration: TextDecoration.underline,
                       fontFamily: 'Roboto',
                     ),
                   ),

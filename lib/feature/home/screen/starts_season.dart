@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StartSessionScreen extends StatefulWidget {
   const StartSessionScreen({super.key});
@@ -91,7 +92,7 @@ class _StartSessionScreenState extends State<StartSessionScreen> {
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
-                        color: Colors.black87,
+                        color: Color(0xFF07657E),
                         height: 1.4,
                       ),
                     ),
@@ -201,9 +202,9 @@ class _StartSessionScreenState extends State<StartSessionScreen> {
                       child: Center(
                         child: Text(
                           'Start Session',
-                          style: TextStyle(
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.bold,
+                          style: GoogleFonts.dmSerifDisplay(
+                            fontSize: 24.sp,
+                            fontWeight: FontWeight.w400,
                             color: Colors.black87,
                           ),
                         ),

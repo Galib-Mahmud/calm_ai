@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -22,6 +23,12 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF6FAFB),
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_new_outlined, color: Color(0XFF07657E)),
+          onPressed: () {
+            Get.back();
+          },
+        ),
         backgroundColor: Color(0XFFF6FAFB),
         elevation: 0,
         centerTitle: true,

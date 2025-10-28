@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TermsAndPrivacyPolicyScreen extends StatelessWidget {
@@ -9,6 +10,12 @@ class TermsAndPrivacyPolicyScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_new_outlined, color: Color(0XFF07657E)),
+          onPressed: () {
+            Get.back();
+          },
+        ),
         backgroundColor: Color(0XFFF6FAFB),
         elevation: 0,
         centerTitle: true,

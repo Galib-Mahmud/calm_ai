@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SettingScreen extends StatelessWidget {
+import '../../../route/route_name.dart';
+
+class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
+
+  @override
+  State<SettingScreen> createState() => _SettingScreenState();
+}
+
+class _SettingScreenState extends State<SettingScreen> {
+  bool isNotification = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF6FAFB),
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_new_outlined, color: Color(0XFF07657E)),
+          onPressed: () {
+            Get.back();
+          },
+        ),
         backgroundColor: Color(0XFFF6FAFB),
         elevation: 0,
         forceMaterialTransparency: true,
@@ -30,6 +46,9 @@ class SettingScreen extends StatelessWidget {
         children: [
           //Profile
           ListTile(
+            onTap: () {
+              Get.toNamed(RouteName.profile);
+            },
             leading: Text(
               "Profile",
               style: TextStyle(
@@ -46,6 +65,9 @@ class SettingScreen extends StatelessWidget {
 
           //Terms and privacy policy
           ListTile(
+            onTap: () {
+              Get.toNamed(RouteName.termsAndPrivacyPolicyScreen);
+            },
             leading: Text(
               "Terms and privacy policy",
               style: TextStyle(
@@ -70,7 +92,14 @@ class SettingScreen extends StatelessWidget {
                 color: Color(0Xff2B2B2B),
               ),
             ),
-            trailing: CustomYellowSwitch(value: true),
+            trailing: CustomYellowSwitch(
+                value: isNotification,
+                onChanged:(value){
+                  setState(() {
+                    isNotification =!isNotification;
+                  });
+                } ),
+
           ),
         ],
       ),

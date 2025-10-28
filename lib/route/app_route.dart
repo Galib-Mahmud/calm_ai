@@ -7,6 +7,7 @@ import 'package:clam_ai/feature/home/screen/download_screen.dart';
 import 'package:clam_ai/feature/home/screen/history_screen.dart';
 import 'package:clam_ai/feature/home/screen/home_screen.dart';
 import 'package:clam_ai/feature/home/screen/profile_screen.dart';
+import 'package:clam_ai/feature/home/screen/progress_screen.dart';
 import 'package:clam_ai/feature/home/screen/setting_screen.dart';
 import 'package:clam_ai/feature/home/screen/starts_season.dart';
 import 'package:clam_ai/feature/home/screen/terms_and_privacy_policy_screen.dart';
@@ -22,6 +23,7 @@ import '../feature/auth/screen/question6_screen.dart';
 import '../feature/auth/screen/reset_password_screen.dart';
 import '../feature/auth/screen/subscription_screen.dart';
 import '../feature/auth/screen/update_password_screen.dart';
+
 import '../feature/home/screen/meditate_screen.dart';
 import '../feature/splash/splash_loading_screen.dart';
 
@@ -162,6 +164,11 @@ class AppRoute {
     GetPage(
       name: RouteName.termsAndPrivacyPolicyScreen,
       page: () => TermsAndPrivacyPolicyScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: Duration(milliseconds: 300),
+    ), GetPage(
+      name: RouteName.progressScreen,
+      page: () => ProgressScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
     ),

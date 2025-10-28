@@ -21,6 +21,7 @@ class RouteName {
   static const String download = '/download';
   static const String profile = '/profile';
   static const String setting = '/setting';
-  static const String termsAndPrivacyPolicyScreen =
-      '/TermsAndPrivacyPolicyScreen';
+  static const String termsAndPrivacyPolicyScreen = '/TermsAndPrivacyPolicyScreen';
+  static const String progressScreen = '/progressScreen';
+
 }

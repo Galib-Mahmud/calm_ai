@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../../../route/route_name.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,10 +34,16 @@ class _HomeScreenState extends State<HomeScreen> {
     "Not sure, just feeling low on energy",
   ];
 
+  // Drawer controller
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Color(0xFFF6FAFB),
+      key: _scaffoldKey, // Assign the key to Scaffold
+
+      drawer: AppDrawer(), // Drawer content
       body: SafeArea(
         child: Column(
           children: [
@@ -48,11 +59,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset(
-                      "assets/images/home/menu.png",
-                      height: 28.h,
-                      width: 28.w,
-                      color: Color(0xFF07657E),
+                    InkWell(
+                      onTap: () {
+                        // Toggle the drawer when menu icon is tapped
+                        _scaffoldKey.currentState?.openDrawer();
+                      },
+                      child: Image.asset(
+                        "assets/images/home/menu.png",
+                        height: 28.h,
+                        width: 28.w,
+                        color: Color(0xFF07657E),
+                      ),
                     ),
                     Image.asset(
                       'assets/images/home/logo3.png',
@@ -110,19 +127,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Welcome Nusrat,',
-                            style: TextStyle(
+                            'Welcome Galib Mahmud,',
+                            style: GoogleFonts.dmSerifDisplay(
                               color: Colors.white,
                               fontSize: 24.sp,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                           SizedBox(height: 8.h),
                           Text(
                             '"Share your feelings, and let AI gently create a mindfulness journey that brings you peace and balance."',
-                            style: TextStyle(
+                            style: GoogleFonts.roboto(
                               color: Colors.white.withOpacity(0.9),
-                              fontSize: 14.sp,
+                              fontSize: 12.sp,
                               fontStyle: FontStyle.italic,
                             ),
                           ),
@@ -313,7 +330,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     // Start Meditation Button (NOT in a card)
                     SizedBox(
                       width: double.infinity,
-                      height: 34.h,
+                      height: 50.h,
                       child: ElevatedButton(
                         onPressed: () {
                           // Handle meditation start
@@ -344,6 +361,119 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class AppDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: Color(0xFFF6FAFB),
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          SizedBox(height: 130.h),
+          ListTile(
+            trailing: Icon(Icons.arrow_forward_ios_rounded),
+
+            title: Text(
+              'Progress',
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600,
+                fontFamily: "Roboto",
+                color: Color(0XFF07657E),
+              ),
+            ),
+            onTap: () {
+              Get.toNamed(RouteName.progressScreen);
+            },
+          ),
+          ListTile(
+            trailing: Icon(Icons.arrow_forward_ios_rounded),
+
+            title: Text(
+              'History',
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600,
+                fontFamily: "Roboto",
+                color: Color(0XFF07657E),
+              ),
+            ),
+            onTap: () {
+              Get.toNamed(RouteName.history);
+            },
+          ),
+          ListTile(
+            trailing: Icon(Icons.arrow_forward_ios_rounded),
+
+            title: Text(
+              'Settings',
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600,
+                fontFamily: "Roboto",
+                color: Color(0XFF07657E),
+              ),
+            ),
+            onTap: () {
+              Get.toNamed(RouteName.setting);
+            },
+          ),
+          ListTile(
+            trailing: Icon(Icons.arrow_forward_ios_rounded),
+
+            title: Text(
+              'Downloads',
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600,
+                fontFamily: "Roboto",
+                color: Color(0XFF07657E),
+              ),
+            ),
+            onTap: () {
+              Get.toNamed(RouteName.download);
+            },
+          ),
+          ListTile(
+            trailing: Icon(Icons.arrow_forward_ios_rounded),
+
+            title: Text(
+              'Subscription',
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600,
+                fontFamily: "Roboto",
+                color: Color(0XFF07657E),
+              ),
+            ),
+            onTap: () {
+              Get.toNamed(RouteName.subscription);
+            },
+          ),
+
+          SizedBox(height: 5.h),
+          ListTile(
+            trailing: Icon(Icons.logout),
+
+            title: Text(
+              'Logout',
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600,
+                fontFamily: "Roboto",
+                color: Color(0XFF07657E),
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context); // Close the drawer
+            },
+          ),
+        ],
       ),
     );
   }
