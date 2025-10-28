@@ -1,7 +1,6 @@
-import 'package:clam_ai/feature/auth/screen/question1_screen.dart';
-import 'package:clam_ai/feature/auth/screen/question2_screen.dart';
 import 'package:clam_ai/feature/auth/screen/question3_screen.dart';
-import 'package:clam_ai/feature/auth/screen/question4_screen.dart';
+
+import 'package:clam_ai/feature/home/screen/history_screen.dart';
 import 'package:clam_ai/feature/home/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,11 +17,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages =  [
+  final List<Widget> _pages = [
     HomeScreen(),
     MeditateScreen(),
     Question3(),
-    Question4(),
+    HistoryScreen(),
   ];
 
   @override
@@ -97,10 +96,7 @@ class _MainScreenState extends State<MainScreen> {
                 ? Colors.transparent
                 : Colors.black.withOpacity(0.1),
             border: isSelected
-                ? Border.all(
-              color: Colors.white.withOpacity(0.5),
-              width: 2,
-            )
+                ? Border.all(color: Colors.white.withOpacity(0.5), width: 2)
                 : null,
             borderRadius: BorderRadius.circular(8.r),
           ),

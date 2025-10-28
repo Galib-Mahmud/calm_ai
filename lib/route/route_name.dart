@@ -1,6 +1,4 @@
-
-
-class RouteName{
+class RouteName {
   static const String splashloading = '/splashloading';
   static const String language = '/language';
   static const String login = '/login';
@@ -19,4 +17,10 @@ class RouteName{
   static const String homeScreen = '/homeScreen';
   static const String meditateScreen = '/meditateScreen';
   static const String startSeason = '/startSeason';
+  static const String history = '/history';
+  static const String download = '/download';
+  static const String profile = '/profile';
+  static const String setting = '/setting';
+  static const String termsAndPrivacyPolicyScreen =
+      '/TermsAndPrivacyPolicyScreen';
 }

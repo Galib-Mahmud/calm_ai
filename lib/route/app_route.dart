@@ -3,8 +3,13 @@ import 'package:clam_ai/feature/auth/screen/otp_screen.dart';
 import 'package:clam_ai/feature/auth/screen/question1_screen.dart';
 import 'package:clam_ai/feature/auth/screen/question2_screen.dart';
 import 'package:clam_ai/feature/auth/screen/signup_screen.dart';
+import 'package:clam_ai/feature/home/screen/download_screen.dart';
+import 'package:clam_ai/feature/home/screen/history_screen.dart';
 import 'package:clam_ai/feature/home/screen/home_screen.dart';
+import 'package:clam_ai/feature/home/screen/profile_screen.dart';
+import 'package:clam_ai/feature/home/screen/setting_screen.dart';
 import 'package:clam_ai/feature/home/screen/starts_season.dart';
+import 'package:clam_ai/feature/home/screen/terms_and_privacy_policy_screen.dart';
 import 'package:clam_ai/feature/splash/main_screen.dart';
 import 'package:clam_ai/route/route_name.dart';
 import 'package:get/get.dart';
@@ -33,37 +38,44 @@ class AppRoute {
       page: () => LanguageScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.login,
       page: () => LoginScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.signup,
       page: () => SignUpScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.resetpassword,
       page: () => ResetPasswordScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.otpScreen,
       page: () => OtpVerificationScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.updatePassword,
       page: () => UpdatePasswordScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.question1,
       page: () => Question1(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.question2,
       page: () => Question2(),
       transition: Transition.rightToLeft,
@@ -80,42 +92,78 @@ class AppRoute {
       page: () => Question4(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.question5,
       page: () => Question5(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.question6,
       page: () => Question6(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.subscription,
       page: () => SubscriptionScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.mainScreen,
       page: () => MainScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.homeScreen,
       page: () => HomeScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.meditateScreen,
       page: () => MeditateScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
-    ),GetPage(
+    ),
+    GetPage(
       name: RouteName.startSeason,
       page: () => StartSessionScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
     ),
-
+    GetPage(
+      name: RouteName.history,
+      page: () => HistoryScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: Duration(milliseconds: 300),
+    ),
+    GetPage(
+      name: RouteName.download,
+      page: () => DownloadScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: Duration(milliseconds: 300),
+    ),
+    GetPage(
+      name: RouteName.profile,
+      page: () => ProfileScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: Duration(milliseconds: 300),
+    ),
+    GetPage(
+      name: RouteName.setting,
+      page: () => SettingScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: Duration(milliseconds: 300),
+    ),
+    GetPage(
+      name: RouteName.termsAndPrivacyPolicyScreen,
+      page: () => TermsAndPrivacyPolicyScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: Duration(milliseconds: 300),
+    ),
   ];
 }

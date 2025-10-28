@@ -12,7 +12,13 @@ class _HomeScreenState extends State<HomeScreen> {
   String selectedMood = 'Tired';
   String? selectedReason;
 
-  final List<String> moods = ['Sadness', 'Tired', 'Stressed', 'Anxiety', 'Calm'];
+  final List<String> moods = [
+    'Sadness',
+    'Tired',
+    'Stressed',
+    'Anxiety',
+    'Calm',
+  ];
 
   final List<String> reasons = [
     "Didn't sleep well last night",
@@ -34,10 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(
-                    color: Colors.grey[300]!,
-                    width: 1,
-                  ),
+                  bottom: BorderSide(color: Colors.grey[300]!, width: 1),
                 ),
               ),
               child: Padding(
@@ -58,8 +61,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Row(
                       children: [
-                        Icon(Icons.notifications_outlined,
-                            color: Color(0xFF07657E), size: 28.sp),
+                        Icon(
+                          Icons.notifications_outlined,
+                          color: Color(0xFF07657E),
+                          size: 28.sp,
+                        ),
                         SizedBox(width: 12.w),
                         CircleAvatar(
                           radius: 18.r,
@@ -86,7 +92,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     SizedBox(height: 15.h),
                     // Welcome Card
                     Container(
@@ -104,8 +109,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
-
                           Text(
                             'Welcome Nusrat,',
                             style: TextStyle(
@@ -123,7 +126,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontStyle: FontStyle.italic,
                             ),
                           ),
-
                         ],
                       ),
                     ),
@@ -165,7 +167,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: moods.map((mood) {
                               final isSelected = selectedMood == mood;
                               return GestureDetector(
-                                onTap: () => setState(() => selectedMood = mood),
+                                onTap: () =>
+                                    setState(() => selectedMood = mood),
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
                                     horizontal: 8.w,
@@ -235,7 +238,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           // Radio Options
                           ...reasons.map((reason) {
                             return GestureDetector(
-                              onTap: () => setState(() => selectedReason = reason),
+                              onTap: () =>
+                                  setState(() => selectedReason = reason),
                               child: Container(
                                 margin: EdgeInsets.only(bottom: 12.h),
                                 child: Row(
@@ -254,15 +258,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       child: selectedReason == reason
                                           ? Center(
-                                        child: Container(
-                                          width: 10.w,
-                                          height: 10.h,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Color(0xFF07657E),
-                                          ),
-                                        ),
-                                      )
+                                              child: Container(
+                                                width: 10.w,
+                                                height: 10.h,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: Color(0xFF07657E),
+                                                ),
+                                              ),
+                                            )
                                           : null,
                                     ),
                                     SizedBox(width: 12.w),
