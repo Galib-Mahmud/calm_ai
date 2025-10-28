@@ -2,6 +2,7 @@ import 'package:clam_ai/route/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LanguageScreen extends StatefulWidget {
   @override
@@ -72,10 +73,10 @@ class _LanguageScreenState extends State<LanguageScreen> {
                   Text(
                     textAlign: TextAlign.start,
                     'Select Language',
-                    style: TextStyle(
+                    style: GoogleFonts.dmSerifDisplay(
                       fontSize: 26.sp,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'DM Serif Display',
+                      fontWeight: FontWeight.w400,
+
                       color: Colors.black87,
                     ),
                   ),
@@ -89,7 +90,9 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 children: [
                   Text(
                     'Select your preferable language',
-                    style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                    style: GoogleFonts.roboto(fontSize: 16,
+
+                        color: Colors.grey[600]),
                   ),
                 ],
               ),
@@ -205,6 +208,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
 
               // Next button
               SizedBox(
+                height: 50.h,
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {

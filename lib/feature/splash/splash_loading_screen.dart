@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../route/route_name.dart';
 
@@ -49,12 +50,11 @@ class _LoadingSplashScreenState extends State<LoadingSplashScreen> {
                 ),
                 Text(
                   'Calm AI',
-                  style: TextStyle(
+                  style: GoogleFonts.dmSerifDisplay(
                     fontSize: 48.sp,
                     color: Color(0xFF07657E),
                     letterSpacing: 0.sp,
-                    fontFamily: 'DM Serif Display',
-                    fontWeight: FontWeight.w400
+                      fontWeight: FontWeight.w400
 
                   ),
                 )

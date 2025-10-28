@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
 
 import '../../../route/route_name.dart';
@@ -165,11 +166,11 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               // Title
               Text(
                 'Enter otp',
-                style: TextStyle(
+                style: GoogleFonts.dmSerifDisplay(
                   fontSize: 26.sp,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'DM Serif Display',
-                  color: Colors.black87,
+                  fontWeight: FontWeight.w400,
+
+                  color: Colors.black,
                 ),
               ),
 
@@ -261,7 +262,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               // Submit button
               SizedBox(
                 width: double.infinity,
-                height: 54.h,
+                height: 50.h,
                 child: ElevatedButton(
                   onPressed: () {
                     Get.toNamed(RouteName.updatePassword);

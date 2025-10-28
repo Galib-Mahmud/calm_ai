@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../route/route_name.dart';
 
@@ -45,7 +46,7 @@ class _Question6State extends State<Question6> {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+          padding: EdgeInsets.only(top: 45.h, left: 24.w, right: 24.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -94,6 +95,8 @@ class _Question6State extends State<Question6> {
               SizedBox(height: 8.h),
 
               LinearProgressIndicator(
+                minHeight: 7.h,
+                borderRadius: BorderRadius.circular(10.r),
                 value: 6 / 6,
                 backgroundColor: Colors.grey.shade300,
                 valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF07657E)),
@@ -104,10 +107,10 @@ class _Question6State extends State<Question6> {
               // Question Text
               Text(
                 '6. How would you describe your current stress level?',
-                style: TextStyle(
+                style: GoogleFonts.dmSerifDisplay(
                   fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w400,
+
                   color: Colors.black,
                 ),
               ),
@@ -153,7 +156,7 @@ class _Question6State extends State<Question6> {
 
               // Next Button
               Padding(
-                padding:  EdgeInsets.only(bottom: 85.h),
+                padding:  EdgeInsets.only(bottom: 105.h),
                 child: SizedBox(
                   width: double.infinity,
                   height: 54.h,

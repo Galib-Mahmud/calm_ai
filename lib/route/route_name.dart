@@ -15,4 +15,8 @@ class RouteName{
   static const String question5 = '/question5';
   static const String question6 = '/question6';
   static const String subscription = '/subscription';
+  static const String mainScreen = '/mainScreen';
+  static const String homeScreen = '/homeScreen';
+  static const String meditateScreen = '/meditateScreen';
+  static const String startSeason = '/startSeason';
 }

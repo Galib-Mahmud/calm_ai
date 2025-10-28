@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../../../route/route_name.dart';
 
 class SubscriptionScreen extends StatefulWidget {
   @override
@@ -25,11 +30,11 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
         leading: Icon(Icons.arrow_back, color: Colors.black),
         title: Text(
           'Subscription',
-          style: TextStyle(
-            fontSize: 18.sp,
+          style: GoogleFonts.dmSerifDisplay(
+            fontSize: 24.sp,
             color: Colors.black,
-            fontWeight: FontWeight.w600,
-            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w400,
+
           ),
         ),
 
@@ -188,10 +193,10 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
             // CTA Button
             SizedBox(
               width: double.infinity,
-              height: 54.h,
+              height: 50.h,
               child: ElevatedButton(
                 onPressed: () {
-                  // Start trial logic here
+                  Get.toNamed(RouteName.mainScreen);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF07657E),

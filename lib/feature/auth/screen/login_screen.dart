@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../route/route_name.dart';
 
@@ -82,11 +83,11 @@ class _LoginScreenState extends State<LoginScreen> {
               // Title
               Text(
                 'Login',
-                style: TextStyle(
+                style: GoogleFonts.dmSerifDisplay(
                   fontSize: 26.sp,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'DM Serif Display',
-                  color: Colors.black87,
+                  fontWeight: FontWeight.w400,
+
+                  color: Colors.black,
                 ),
               ),
 
@@ -95,9 +96,9 @@ class _LoginScreenState extends State<LoginScreen> {
               // Subtitle
               Text(
                 'Access to your account',
-                style: TextStyle(
+                style: GoogleFonts.roboto(
                   fontSize: 16.sp,
-                  fontFamily: 'Roboto',
+
                   color: Colors.grey[600],
                 ),
               ),
@@ -242,13 +243,10 @@ class _LoginScreenState extends State<LoginScreen> {
               // Login button
               SizedBox(
                 width: double.infinity,
-                height: 54.h,
+                height: 50.h,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle login
-                    print('Name: ${nameController.text}');
-                    print('Email: ${emailController.text}');
-                    print('Password: ${passwordController.text}');
+                  Get.toNamed(RouteName.question1);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF07657E),
