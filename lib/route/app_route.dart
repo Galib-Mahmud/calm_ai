@@ -1,3 +1,4 @@
+import 'package:clam_ai/feature/auth/screen/forget_pass_otp_screen.dart';
 import 'package:clam_ai/feature/auth/screen/login_screen.dart';
 import 'package:clam_ai/feature/auth/screen/otp_screen.dart';
 import 'package:clam_ai/feature/auth/screen/question1_screen.dart';
@@ -62,6 +63,11 @@ class AppRoute {
     GetPage(
       name: RouteName.otpScreen,
       page: () => OtpVerificationScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: Duration(milliseconds: 300),
+    ),GetPage(
+      name: RouteName.forgetPassOtpScreen,
+      page: () => ForgetPassOtp(),
       transition: Transition.rightToLeft,
       transitionDuration: Duration(milliseconds: 300),
     ),

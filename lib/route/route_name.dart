@@ -5,6 +5,7 @@ class RouteName {
   static const String signup = '/signup';
   static const String resetpassword = '/resetpassword';
   static const String otpScreen = '/otpScreen';
+  static const String forgetPassOtpScreen = '/forgetPassOtpScreen';
   static const String updatePassword = '/updatePassword';
   static const String question1 = '/question1';
   static const String question2 = '/question2';

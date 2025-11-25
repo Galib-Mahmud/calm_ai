@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../route/route_name.dart';
+import '../controller/sign_up_controller.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -11,392 +12,238 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final SignupController controller = Get.put(SignupController());
   bool isPasswordVisible = false;
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: double.infinity,
+        width: double.infinity,
         decoration: BoxDecoration(
+
           image: DecorationImage(
-            image: AssetImage('assets/images/auth/background.png'),
+
+
+            image: AssetImage("assets/images/auth/background.png",
+
+
+            ),
             fit: BoxFit.cover,
           ),
         ),
-        child: Padding(
-          padding: EdgeInsets.only( top: 60.h,
-              bottom: 24.h,
-              left: 24.w,
-              right: 24.w  ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 16.h),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
 
-              // Skip button
-              Align(
-                alignment: Alignment.topRight,
-                child: TextButton(
-                  onPressed: () {
-                    // Handle skip action
-                    Navigator.pushReplacementNamed(context, '/home');
-                  },
-                  child: Text(
-                    'Skip',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
-                      fontFamily: 'Roboto',
-                      decoration: TextDecoration.underline,
-
-                    ),
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 10.h),
-
-              // Logo
-              Center(
-                child: Image.asset(
-                  'assets/images/auth/logo1.png',
-                  height: 104.h,
-                  width: 104.w,
-                  fit: BoxFit.contain,
-                ),
-              ),
-
-              SizedBox(height: 15.h),
-
-              // Title
-              Text(
-                'Sign Up',
-                style: GoogleFonts.dmSerifDisplay(
-                  fontSize: 26.sp,
-                  fontWeight: FontWeight.bold,
-
-                  color: Colors.black87,
-                ),
-              ),
-
-              SizedBox(height: 8.h),
-
-              // Subtitle
-              Text(
-                'Access to your account',
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontFamily: 'Roboto',
-                  color: Colors.grey[600],
-                ),
-              ),
-
-              SizedBox(height: 32.h),
-
-              // Name input field
-              TextField(
-
-                decoration: InputDecoration(
-                  hintText: 'Enter your name',
-                  hintStyle: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 16.sp,
-                    fontFamily: 'Roboto',
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide.none,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(
-                      color: Colors.grey[400]!,
-                      width: 1,
-                    ),
-
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(
-                      color: Color(0xFF07657E),
-                      width: 2,
-                    ),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 16.h,
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 16.h),
-
-              // Email input field
-              TextField(
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  hintText: 'Enter your email address',
-                  hintStyle: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 16.sp,
-                    fontFamily: 'Roboto',
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide.none,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(
-                      color: Colors.grey[400]!,
-                      width: 1,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(
-                      color: Color(0xFF07657E),
-                      width: 2,
-                    ),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 16.h,
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 16.h),
-
-              // Password input field
-              TextField(
-                controller: passwordController,
-                obscureText: !isPasswordVisible,
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  hintStyle: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 16.sp,
-                    fontFamily: 'Roboto',
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      isPasswordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color: Colors.grey[600],
-                      size: 22.sp,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isPasswordVisible = !isPasswordVisible;
-                      });
-                    },
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide.none,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(
-                      color: Colors.grey[400]!,
-                      width: 1,
-
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(
-                      color: Color(0xFF07657E),
-                      width: 2,
-                    ),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 16.h,
-                  ),
-                ),
-              ),
-              SizedBox(height: 16.h),
-              TextField(
-                controller: passwordController,
-                obscureText: !isPasswordVisible,
-                decoration: InputDecoration(
-                  hintText: 'Confirm Password',
-                  hintStyle: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 16.sp,
-                    fontFamily: 'Roboto',
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      isPasswordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color: Colors.grey[600],
-                      size: 22.sp,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isPasswordVisible = !isPasswordVisible;
-                      });
-                    },
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide.none,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(
-                      color: Colors.grey[400]!,
-                      width: 1,
-
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(
-                      color: Color(0xFF07657E),
-                      width: 2,
-                    ),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 16.h,
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 24.h),
-
-              // Login button
-              SizedBox(
-                width: double.infinity,
-                height: 50.h,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle login
-                    print('Name: ${nameController.text}');
-                    print('Email: ${emailController.text}');
-                    print('Password: ${passwordController.text}');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF07657E),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.r),
-                    ),
-                    elevation: 0,
-                  ),
-                  child: Text(
-                    'Signup',
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'Roboto',
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 16.h),
-
-
-
-
-              // Divider with text
-              Row(
-                children: [
-                  Expanded(
-                    child: Divider(
-                      color: Colors.black.withOpacity(0.4),
-                      thickness: 2,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                /// Skip button
+                Align(
+                  alignment: Alignment.topRight,
+                  child: TextButton(
+                    onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
                     child: Text(
-                      'or continue with',
+                      'Skip',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto',
+                        fontSize: 16.sp,
+                        decoration: TextDecoration.underline,
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Divider(
-                      color: Colors.black.withOpacity(0.4),
-                      thickness: 2,
+                ),
+
+                SizedBox(height: 10.h),
+
+                /// Logo
+                Center(
+                  child: Image.asset(
+                    "assets/images/auth/logo1.png",
+                    height: 104.h,
+                    width: 104.w,
+                  ),
+                ),
+
+                SizedBox(height: 20.h),
+
+                /// Title
+                Text(
+                  "Sign Up",
+                  style: GoogleFonts.dmSerifDisplay(
+                    fontSize: 28.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+
+                SizedBox(height: 4.h),
+
+                /// Subtitle
+                Text(
+                  "Access to your account",
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    color: Colors.grey[700],
+                  ),
+                ),
+
+                SizedBox(height: 32.h),
+
+                /// Full Name
+                _inputField(
+                  controller: controller.nameController,
+                  hint: "Enter your full name",
+                  keyboard: TextInputType.name,
+                ),
+
+                SizedBox(height: 16.h),
+
+                /// Email
+                _inputField(
+                  controller: controller.emailController,
+                  hint: "Enter your email address",
+                  keyboard: TextInputType.emailAddress,
+                ),
+
+                SizedBox(height: 16.h),
+
+                /// Password
+                _passwordField(
+                  controller: controller.passwordController,
+                  hint: "Password",
+                ),
+
+                SizedBox(height: 16.h),
+
+                /// Confirm Password
+                _passwordField(
+                  controller: controller.confirmPasswordController,
+                  hint: "Confirm Password",
+                ),
+
+                SizedBox(height: 28.h),
+
+                /// Signup Button
+                SizedBox(
+                  width: double.infinity,
+                  height: 52.h,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      controller.register();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF07657E),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.r),
+                      ),
+                    ),
+                    child: Text(
+                      "Signup",
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                ],
-              ),
+                ),
 
-              SizedBox(height: 24.h),
+                SizedBox(height: 20.h),
 
-              // Sign up link
-              Center(
-                child: Row(
+                /// Divider
+                Row(
+                  children: [
+                    Expanded(child: Divider(color: Colors.black45)),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: Text("or continue with"),
+                    ),
+                    Expanded(child: Divider(color: Colors.black45)),
+                  ],
+                ),
+
+                SizedBox(height: 20.h),
+
+                /// Already have account? Login
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Don't have an account ? ",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Roboto',
-                      ),
-                    ),
+                    Text("Already have an account? "),
                     GestureDetector(
-                      onTap: () {
-                      Get.toNamed(RouteName.login);
-                      },
+                      onTap: () => Get.toNamed(RouteName.login),
                       child: Text(
-                        ' Sign In',
+                        "Sign In",
                         style: TextStyle(
                           color: Color(0xFF07657E),
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.bold,
                           decoration: TextDecoration.underline,
                         ),
                       ),
                     ),
                   ],
                 ),
-              ),
 
-              SizedBox(height: 24.h),
-            ],
+                SizedBox(height: 20.h),
+              ],
+            ),
           ),
         ),
       ),
+    );
+  }
+
+  /// Reusable input field
+  Widget _inputField({required TextEditingController controller, required String hint, required TextInputType keyboard}) {
+    return TextField(
+      controller: controller,
+      keyboardType: keyboard,
+      decoration: InputDecoration(
+        hintText: hint,
+        filled: true,
+        fillColor: Colors.white,
+        border: _outlineBorder(),
+        enabledBorder: _outlineBorder(color: Colors.grey),
+        focusedBorder: _outlineBorder(color: Color(0xFF07657E), width: 2),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      ),
+    );
+  }
+
+  /// Password field with toggle
+  Widget _passwordField({required TextEditingController controller, required String hint}) {
+    return TextField(
+      controller: controller,
+      obscureText: !isPasswordVisible,
+      decoration: InputDecoration(
+        hintText: hint,
+        filled: true,
+        fillColor: Colors.white,
+        suffixIcon: IconButton(
+          icon: Icon(
+            isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+            color: Colors.grey,
+          ),
+          onPressed: () {
+            setState(() {
+              isPasswordVisible = !isPasswordVisible;
+            });
+          },
+        ),
+        border: _outlineBorder(),
+        enabledBorder: _outlineBorder(color: Colors.grey),
+        focusedBorder: _outlineBorder(color: Color(0xFF07657E), width: 2),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      ),
+    );
+  }
+
+  OutlineInputBorder _outlineBorder({Color color = Colors.transparent, double width = 1}) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12.r),
+      borderSide: BorderSide(color: color, width: width),
     );
   }
 }

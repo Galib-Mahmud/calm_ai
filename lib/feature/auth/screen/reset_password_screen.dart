@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../route/route_name.dart';
+import '../controller/forget_pass_controller.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   @override
@@ -11,18 +12,12 @@ class ResetPasswordScreen extends StatefulWidget {
 }
 
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final ForgetPasswordController forgetPassController = Get.put(ForgetPasswordController());
+
+
   bool isPasswordVisible = false;
 
-  @override
-  void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +103,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
               // Email input field
               TextField(
-                controller: emailController,
+                controller: forgetPassController.emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: 'Enter your email address',
@@ -152,7 +147,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 height: 50.h,
                 child: ElevatedButton(
                   onPressed: () {
-                  Get.toNamed(RouteName.otpScreen);
+
+
+                    forgetPassController.forgetPassword();
+
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF07657E),

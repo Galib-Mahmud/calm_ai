@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../route/route_name.dart';
+import '../controller/forget_pass_controller.dart';
 
 class UpdatePasswordScreen extends StatefulWidget {
   @override
@@ -11,18 +12,23 @@ class UpdatePasswordScreen extends StatefulWidget {
 }
 
 class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+
+
+
+  String email = '';
+  @override
+  void initState() {
+   email = Get.arguments?['email'] ?? '';
+    super.initState();
+  }
+
+  final controller = Get.put(ForgetPasswordController());
+
+
+
   bool isPasswordVisible = false;
 
-  @override
-  void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +113,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
 
               // Password input field
               TextField(
-                controller: passwordController,
+                 controller: controller.passwordController,
                 obscureText: !isPasswordVisible,
                 decoration: InputDecoration(
                   hintText: 'Password',
@@ -159,7 +165,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
               ),
               SizedBox(height: 16.h),
               TextField(
-                controller: passwordController,
+                controller: controller.confirmPasswordController,
                 obscureText: !isPasswordVisible,
                 decoration: InputDecoration(
                   hintText: 'Confirm Password',
@@ -219,7 +225,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                 height: 50.h,
                 child: ElevatedButton(
                   onPressed: () {
-                  Get.toNamed(RouteName.subscription);
+                 controller.resetPassword(email);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF07657E),

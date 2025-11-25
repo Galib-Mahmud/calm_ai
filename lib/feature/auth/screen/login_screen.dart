@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../route/route_name.dart';
+import '../controller/sign_in_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -11,6 +12,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final SignInController controller = Get.put(SignInController());
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -107,8 +110,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
               // Name input field
               TextField(
-
+                controller: controller.nameController,
                 decoration: InputDecoration(
+
                   hintText: 'Enter your name',
                   hintStyle: TextStyle(
                     color: Colors.grey[400],
@@ -147,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               // Email input field
               TextField(
-                controller: emailController,
+                controller: controller.emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: 'Enter your email address',
@@ -187,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               // Password input field
               TextField(
-                controller: passwordController,
+              controller: controller.passwordController,
                 obscureText: !isPasswordVisible,
                 decoration: InputDecoration(
                   hintText: 'Password',
@@ -246,7 +250,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 50.h,
                 child: ElevatedButton(
                   onPressed: () {
-                  Get.toNamed(RouteName.question1);
+                     controller.loginUser();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF07657E),

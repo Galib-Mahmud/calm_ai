@@ -5,6 +5,8 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../route/route_name.dart';
+import '../../splash/main_screen.dart';
+import 'meditate_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -171,8 +173,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             'Mood Check-in',
                             style: TextStyle(
                               fontSize: 18.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFF2B2B2B),
                             ),
                           ),
 
@@ -333,7 +335,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 50.h,
                       child: ElevatedButton(
                         onPressed: () {
-                          // Handle meditation start
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainScreen(initialIndex: 1),
+                            ),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFF07657E),

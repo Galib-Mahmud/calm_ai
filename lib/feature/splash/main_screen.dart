@@ -7,14 +7,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../home/screen/meditate_screen.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  const MainScreen({super.key,this.initialIndex = 0});
+  final int initialIndex;
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
+
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
+
+late  int _currentIndex = 0;
+
+@override
+void initState() {
+  super.initState();
+  _currentIndex = widget.initialIndex;
+}
 
   final List<Widget> _pages = [
     HomeScreen(),
@@ -37,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
               offset: const Offset(0, -2),
             ),
           ],
-        ),
+         ),
         child: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),

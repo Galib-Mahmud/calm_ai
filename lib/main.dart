@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme, // ✅ use theme her
-          initialRoute: RouteName.splashloading,
+          initialRoute: RouteName.signup,
           getPages: AppRoute.pages,
         );
       },

@@ -6,15 +6,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
 
 import '../../../route/route_name.dart';
-import '../controller/otp_controller.dart';
+import '../controller/forget_pass_controller.dart';
 
-class OtpVerificationScreen extends StatefulWidget {
+class ForgetPassOtp extends StatefulWidget {
   @override
-  _OtpVerificationScreenState createState() => _OtpVerificationScreenState();
+  _ForgetPassOtpState createState() => _ForgetPassOtpState();
 }
 
-class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
-  final OtpController otpController = Get.put(OtpController());
+class _ForgetPassOtpState extends State<ForgetPassOtp> {
+  final ForgetPasswordController forgetPasswordController = Get.put(ForgetPasswordController());
   final List<TextEditingController> otpControllers = List.generate(
     6,
         (index) => TextEditingController(),
@@ -80,25 +80,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     }
   }
 
-  void _handleBackspace(String value, int index) {
-    if (value.isEmpty && index > 0) {
-      focusNodes[index - 1].requestFocus();
-    }
-  }
 
-  void _resendOtp() {
-    if (_canResend) {
-      // Handle resend OTP logic
-      print('Resending OTP...');
-      Get.snackbar(
-        'Success',
-        'OTP has been resent to your email',
-        backgroundColor: Colors.green.shade100,
-        colorText: Colors.green.shade900,
-      );
-      _startTimer();
-    }
-  }
 
   void _submitOtp() {
     String otp = getOtp();
@@ -114,7 +96,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       return;
     }
 
-    // Fixed: Check for 6 digits, not 5
+    // Check for 6 digits
     if (otp.length != 6) {
       Get.snackbar(
         'Error',
@@ -125,9 +107,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       return;
     }
 
-    // Handle OTP verification
+    // Handle OTP verification - FIXED: Call verifyOtp method
     print('Verifying OTP: $otp for email: $email');
-    otpController.verifyOtp(email, otp);
+    forgetPasswordController.verifyOtp(email, otp);
   }
 
   @override
@@ -273,20 +255,32 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
               SizedBox(height: 32.h),
 
-              // Submit button
-              SizedBox(
+              // Submit button with loading state
+              Obx(() => SizedBox(
                 width: double.infinity,
                 height: 50.h,
                 child: ElevatedButton(
-                  onPressed: _submitOtp,
+                  onPressed: forgetPasswordController.isLoading.value
+                      ? null
+                      : _submitOtp,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF07657E),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.r),
                     ),
                     elevation: 0,
+                    disabledBackgroundColor: Color(0xFF07657E).withOpacity(0.6),
                   ),
-                  child: Text(
+                  child: forgetPasswordController.isLoading.value
+                      ? SizedBox(
+                    height: 20.h,
+                    width: 20.w,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                      strokeWidth: 2,
+                    ),
+                  )
+                      : Text(
                     'Submit',
                     style: TextStyle(
                       fontSize: 18.sp,
@@ -296,41 +290,11 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     ),
                   ),
                 ),
-              ),
+              )),
 
               SizedBox(height: 16.h),
 
-              // Resend OTP
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Resend OTP : ',
-                      style: TextStyle(
-                        color: Colors.grey[700],
-                        fontSize: 14.sp,
-                        fontFamily: 'Roboto',
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: _resendOtp,
-                      child: Text(
-                        _canResend
-                            ? 'Resend'
-                            : '(00:${_remainingSeconds.toString().padLeft(2, '0')})',
-                        style: TextStyle(
-                          color: _canResend ? Color(0xFF07657E) : Colors.grey[500],
-                          fontSize: 14.sp,
-                          fontWeight: _canResend ? FontWeight.w600 : FontWeight.w400,
-                          fontFamily: 'Roboto',
-                          decoration: _canResend ? TextDecoration.underline : null,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+
             ],
           ),
         ),

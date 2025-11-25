@@ -286,7 +286,7 @@ class _MeditateScreenState extends State<MeditateScreen> {
             width: 20.w,
             height: 20.h,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1),
+              color: Color(0xFF2196F3),
               shape: BoxShape.circle,
             ),
             child: Icon(Icons.check, color: Colors.white, size: 14.sp),
