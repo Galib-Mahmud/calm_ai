@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../route/route_name.dart';
+import '../controller/onboarding_controller.dart';
 
 class Question5 extends StatefulWidget {
   @override
@@ -11,6 +12,9 @@ class Question5 extends StatefulWidget {
 }
 
 class _Question5State extends State<Question5> {
+  // Get the controller instance
+  final OnboardingController controller = Get.find<OnboardingController>();
+
   final List<String> options = [
     'Calm female voice',
     'Calm male voice',
@@ -18,6 +22,21 @@ class _Question5State extends State<Question5> {
   ];
 
   String? selectedOption;
+
+  @override
+  void initState() {
+    super.initState();
+    // Load previously selected option if any
+    selectedOption = controller.voicePreference.value;
+  }
+
+  void _handleOptionTap(String option) {
+    setState(() {
+      selectedOption = option;
+    });
+    // Save to controller immediately when option is selected
+    controller.setVoicePreference(option);
+  }
 
   void _handleNext() {
     if (selectedOption == null) {
@@ -30,9 +49,11 @@ class _Question5State extends State<Question5> {
       return;
     }
 
-    print('Selected: $selectedOption');
-    // Navigate to next question or result
-    // Get.toNamed('/next-question');
+    // Save to controller (in case not saved yet)
+    controller.setVoicePreference(selectedOption!);
+
+    // Navigate to next question
+    Get.toNamed(RouteName.question6);
   }
 
   @override
@@ -55,7 +76,7 @@ class _Question5State extends State<Question5> {
                 alignment: Alignment.topRight,
                 child: TextButton(
                   onPressed: () {
-                    // Get.offAllNamed('/home');
+                    controller.skipOnboarding();
                   },
                   child: Text(
                     'Skip',
@@ -110,7 +131,6 @@ class _Question5State extends State<Question5> {
                 style: GoogleFonts.dmSerifDisplay(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w400,
-
                   color: Colors.black,
                 ),
               ),
@@ -122,7 +142,7 @@ class _Question5State extends State<Question5> {
                     (option) => Padding(
                   padding: EdgeInsets.symmetric(vertical: 6.h),
                   child: GestureDetector(
-                    onTap: () => setState(() => selectedOption = option),
+                    onTap: () => _handleOptionTap(option),
                     child: Row(
                       children: [
                         Icon(
@@ -156,14 +176,12 @@ class _Question5State extends State<Question5> {
 
               // Next button
               Padding(
-                padding:  EdgeInsets.only(bottom: 105.h),
+                padding: EdgeInsets.only(bottom: 105.h),
                 child: SizedBox(
                   width: double.infinity,
                   height: 54.h,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Get.toNamed(RouteName.question6);
-                    },
+                    onPressed: _handleNext,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF07657E),
                       shape: RoundedRectangleBorder(

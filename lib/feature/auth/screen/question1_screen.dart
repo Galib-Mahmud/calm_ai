@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../route/route_name.dart';
+import '../controller/onboarding_controller.dart';
 
 class Question1 extends StatefulWidget {
   @override
@@ -11,6 +12,9 @@ class Question1 extends StatefulWidget {
 }
 
 class _Question1State extends State<Question1> {
+  // Get or create the controller
+  final OnboardingController controller = Get.put(OnboardingController());
+
   final List<String> options = [
     'Reduce stress',
     'Better sleep',
@@ -20,6 +24,15 @@ class _Question1State extends State<Question1> {
   ];
 
   final List<String> selectedOptions = [];
+
+  @override
+  void initState() {
+    super.initState();
+    // Load previously selected options if any
+    if (controller.selectedGoals.isNotEmpty) {
+      selectedOptions.addAll(controller.selectedGoals);
+    }
+  }
 
   void _handleOptionTap(String option) {
     setState(() {
@@ -51,9 +64,11 @@ class _Question1State extends State<Question1> {
       return;
     }
 
-    print('Selected: $selectedOptions');
+    // Save to controller
+    controller.setMindfulnessGoals(selectedOptions);
+
     // Navigate to next question
-    // Get.toNamed('/next-question');
+    Get.toNamed(RouteName.question2);
   }
 
   @override
@@ -76,7 +91,7 @@ class _Question1State extends State<Question1> {
                 alignment: Alignment.topRight,
                 child: TextButton(
                   onPressed: () {
-                    // Get.offAllNamed('/home');
+                    controller.skipOnboarding();
                   },
                   child: Text(
                     'Skip',
@@ -131,7 +146,6 @@ class _Question1State extends State<Question1> {
                 style: GoogleFonts.dmSerifDisplay(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w400,
-
                   color: Colors.black,
                 ),
               ),
@@ -151,7 +165,7 @@ class _Question1State extends State<Question1> {
 
               // Options
               ...options.map(
-                (option) => Padding(
+                    (option) => Padding(
                   padding: EdgeInsets.symmetric(vertical: 6.h),
                   child: GestureDetector(
                     onTap: () => _handleOptionTap(option),
@@ -193,9 +207,7 @@ class _Question1State extends State<Question1> {
                   width: double.infinity,
                   height: 54.h,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Get.toNamed(RouteName.question2);
-                    },
+                    onPressed: _handleNext,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF07657E),
                       shape: RoundedRectangleBorder(

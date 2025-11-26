@@ -51,7 +51,7 @@ class SignInController extends GetxController {
       // final refreshToken = response['data']?['tokens']?['refresh'];
 
       if(response.containsKey("token")){
-        Get.toNamed(RouteName.homeScreen);
+        Get.toNamed(RouteName.question1);
       }
 
       if (accessToken != null ) {

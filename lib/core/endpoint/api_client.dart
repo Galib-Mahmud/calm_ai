@@ -21,6 +21,7 @@ class ApiClient {
     print("📋 [GET] Headers: $mergedHeaders");
 
     final response = await _httpClient.get(url, headers: mergedHeaders);
+
     return _handleResponse(response, url, method: "GET");
   }
 

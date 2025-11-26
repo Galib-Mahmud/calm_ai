@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../route/route_name.dart';
+import '../controller/mood_controller.dart';
 
 class MeditateScreen extends StatefulWidget {
   const MeditateScreen({super.key});
@@ -13,20 +14,23 @@ class MeditateScreen extends StatefulWidget {
 }
 
 class _MeditateScreenState extends State<MeditateScreen> {
-  String selectedBackground = 'No background noise';
+  String selectedBackground = 'ocean';
   String selectedVoice = 'Female';
 
   final List<String> backgrounds = [
-    'No background noise',
-    'Ocean waves',
-    'Rain sounds',
-    'Forest ambience',
+    'ocean',
+    'forest',
+    'wind',
+    'stream',
+    'rain',
   ];
 
   final List<String> voices = ['Female', 'Male'];
 
   @override
   Widget build(BuildContext context) {
+
+    final moodController = Get.find<MoodController>();
     return Scaffold(
       backgroundColor: Color(0xFFF6FAFB),
       appBar: AppBar(
@@ -188,7 +192,9 @@ class _MeditateScreenState extends State<MeditateScreen> {
                   }).toList(),
                   onChanged: (String? newValue) {
                     setState(() {
-                      selectedBackground = newValue!;
+
+                      moodController.selectedBackground.value = newValue!;
+
                     });
                   },
                 ),
@@ -244,31 +250,38 @@ class _MeditateScreenState extends State<MeditateScreen> {
 
             SizedBox(height: 32.h),
 
-            // Start Button
-            SizedBox(
-              width: double.infinity,
-              height: 50.h,
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.toNamed(RouteName.startSeason);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF07657E),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.r),
+            if (moodController.questions.isNotEmpty)
+              Obx(() => moodController.areAllQuestionsAnswered()
+                  ? SizedBox(
+                width: double.infinity,
+                height: 50.h,
+                child: Obx(
+                  () =>  ElevatedButton(
+
+                    onPressed: () => moodController.submitMoodCheckin(),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF07657E),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.r),
+                      ),
+                      elevation: 2,
+                    ),
+                    child: moodController.isLoadingSubmit.value ? const CircularProgressIndicator(
+                      color: Colors.white,
+                    ) : Text(
+                      'Submit Mood Check-in',
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: "Roboto",
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                  elevation: 2,
                 ),
-                child: Text(
-                  'Start',
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
+              )
+                  : SizedBox()),
+
 
             SizedBox(height: 24.h),
           ],

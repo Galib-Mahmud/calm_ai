@@ -8,5 +8,9 @@ class ApiEndpoint {
   static const String forgetPass = "/api/auth/forgot-password";
   static const String verifyForgetPass = "/api/auth/verify-reset-otp";
   static const String resetPassword = "/api/auth/reset-password";
+  static const String onboardingSubmit = "/api/onboarding/submit";
+  static const String getMoods = "/api/meditation/moods/";
+  static const String getQuestionsByMood = "/api/meditation/questions/";
+  static const String submitMoodCheckin = "/api/meditation/generate/";
 
 }
